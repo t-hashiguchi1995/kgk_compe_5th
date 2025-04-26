@@ -1,9 +1,6 @@
-# KGK Competition 5th
-
-テスト用の変更を加えました。
-
 # KgKコンペシーズン5用のリポジトリ
 
+github actionsテスト
 
 # 環境構築
 uvのインストール
