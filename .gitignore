@@ -11,6 +11,7 @@ wheels/
 
 .env
 .ruff_cache
+data/
 
 # GitHub Actions
 .github/workflow/ai-pr-reviewer.yml
