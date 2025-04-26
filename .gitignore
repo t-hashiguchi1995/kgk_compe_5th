@@ -8,3 +8,9 @@ wheels/
 
 # Virtual environments
 .venv
+
+.env
+.ruff_cache
+
+# GitHub Actions
+.github/workflow/ai-pr-reviewer.yml

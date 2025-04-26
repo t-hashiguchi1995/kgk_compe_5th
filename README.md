@@ -34,6 +34,11 @@ uv run task lint
 uv run task format
 ```
 
+```bash
+ruff check ruff_example.py
+ruff format ruff_example.py
+```
+
 # コードの型確認
 ```bash
 uv run mypy mypy_example.py
