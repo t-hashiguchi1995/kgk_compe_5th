@@ -12,5 +12,12 @@ wheels/
 .env
 .ruff_cache
 
+# データ
+data/
+
+# モデル
+model/
+
+
 # GitHub Actions
 .github/workflow/ai-pr-reviewer.yml
