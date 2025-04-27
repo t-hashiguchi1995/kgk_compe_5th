@@ -17,7 +17,3 @@ data/
 
 # モデル
 model/
-
-
-# GitHub Actions
-.github/workflow/ai-pr-reviewer.yml
