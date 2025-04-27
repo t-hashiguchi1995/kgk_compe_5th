@@ -5,8 +5,9 @@ permissions:
   pull-requests: write
 
 on:
-  pull_request:
-  pull_request_review_comment:
+  pull_request:                     # プルリクエスト関連のイベントでトリガー
+    types: [opened, synchronize]    # PRがオープンされた時、または新しいコミットが追加された時(synchronize)
+  pull_request_review_comment:      # PRのレビューコメントが作成された時 (ボットとの対話用) [4]
     types: [created]
 
 concurrency:
@@ -29,7 +30,7 @@ jobs:
           review_simple_changes: false
           review_comment_lgtm: false
           openai_light_model: gpt-4o
-          openai_heavy_model: o3
+          openai_heavy_model: gpt-4o
           language: ja-JP
           review: |
             日本語を使用してください。
