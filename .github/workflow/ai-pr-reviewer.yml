@@ -3,12 +3,16 @@ name: Code Review
 permissions:
   contents: read
   pull-requests: write
+  issues: write
 
 on:
-  pull_request:                     # プルリクエスト関連のイベントでトリガー
-    types: [opened, synchronize]    # PRがオープンされた時、または新しいコミットが追加された時(synchronize)
+  pull_request:
+    types: [opened, reopened, synchronize, ready_for_review, review_requested]
   pull_request_review_comment:      # PRのレビューコメントが作成された時 (ボットとの対話用) [4]
     types: [created]
+  issue_comment:
+    types: [created, edited]
+  workflow_dispatch:
 
 concurrency:
   group:
@@ -21,16 +25,18 @@ jobs:
   review:
     runs-on: ubuntu-latest
     steps:
-      - uses: coderabbitai/ai-pr-reviewer@latest
+      - uses: qodo-ai/pr-agent@main
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          GITHUB_ACTION.AUTO_REVIEW: true
+          GITHUB_ACTION.AUTO_IMPROVE: true
         with:
           debug: false
           review_simple_changes: false
           review_comment_lgtm: false
           openai_light_model: gpt-4o
-          openai_heavy_model: gpt-4o
+          openai_heavy_model: o3
           language: ja-JP
           review: |
             日本語を使用してください。
